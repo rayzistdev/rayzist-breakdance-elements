@@ -2,14 +2,14 @@
 
 /**
  * Plugin Name: Rayzist Custom Elements
- * Plugin URI: https://breakdance.com/
- * Description: Boilerplate plugin to save your custom elements created with Element Studio.
- * Author: Breakdance
- * Author URI: https://breakdance.com/
+ * Plugin URI: https://rayzist.com/
+ * Description: This plugin is meant to be used for any websites hosted by Rayzist Photomask for further customization.
+ * Author: Rayzist Photomask
+ * Author URI: https://rayzist.com/
  * License: GPLv2
  * Text Domain: breakdance
  * Domain Path: /languages/
- * Version: 0.0.1
+ * Version: 1.0.0
  */
 
 namespace BreakdanceCustomElements;
@@ -19,25 +19,25 @@ use function Breakdance\Util\getDirectoryPathRelativeToPluginFolder;
 add_action('breakdance_loaded', function () {
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/elements',
-        'BreakdanceCustomElements',
+        'RayzistCustomElements',
         'element',
-        'Custom Elements',
+        'Custom Rayzist Elements',
         false
     );
 
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/macros',
-        'BreakdanceCustomElements',
+        'RayzistCustomElements',
         'macro',
-        'Custom Macros',
+        'Custom Rayzist Macros',
         false,
     );
 
     \Breakdance\ElementStudio\registerSaveLocation(
         getDirectoryPathRelativeToPluginFolder(__DIR__) . '/presets',
-        'BreakdanceCustomElements',
+        'RayzistCustomElements',
         'preset',
-        'Custom Presets',
+        'Custom Rayzist Presets',
         false,
     );
 },

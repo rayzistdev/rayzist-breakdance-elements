@@ -1,17 +1,17 @@
 <?php
 
-namespace BreakdanceCustomElements;
+namespace RayzistCustomElements;
 
 use function Breakdance\Elements\c;
 use function Breakdance\Elements\PresetSections\getPresetSection;
 
 
 \Breakdance\ElementStudio\registerElementForEditing(
-    "BreakdanceCustomElements\\CategoryLoop",
+    "RayzistCustomElements\\CategoryCards",
     \Breakdance\Util\getdirectoryPathRelativeToPluginFolder(__DIR__)
 );
 
-class CategoryLoop extends \Breakdance\Elements\Element
+class CategoryCards extends \Breakdance\Elements\Element
 {
     static function uiIcon()
     {
@@ -35,7 +35,7 @@ class CategoryLoop extends \Breakdance\Elements\Element
 
     static function name()
     {
-        return 'Category Loop';
+        return 'Category Cards';
     }
 
     static function className()
@@ -94,7 +94,7 @@ class CategoryLoop extends \Breakdance\Elements\Element
         "Columns",
         [],
         ['type' => 'number', 'layout' => 'inline', 'rangeOptions' => ['min' => 1, 'max' => 5, 'step' => 1]],
-        false,
+        true,
         false,
         [],
       )],
@@ -132,7 +132,7 @@ class CategoryLoop extends \Breakdance\Elements\Element
       "EssentialElements\\spacing_margin_y",
       "Margin",
       "margin",
-       ['type' => 'accordion']
+       ['type' => 'popout']
      )];
     }
 
@@ -153,7 +153,7 @@ class CategoryLoop extends \Breakdance\Elements\Element
 
     static function settings()
     {
-        return ['disableAI' => true];
+        return ['disableAI' => true, 'proOnly' => true];
     }
 
     static function addPanelRules()
@@ -173,7 +173,7 @@ class CategoryLoop extends \Breakdance\Elements\Element
 
     static function spacingBars()
     {
-        return [['cssProperty' => 'margin-top', 'location' => 'outside-top', 'affectedPropertyPath' => 'design.margin.%%BREAKPOINT%%.margin_top'], ['cssProperty' => 'margin-bottom', 'location' => 'outside-bottom', 'affectedPropertyPath' => 'design.margin.%%BREAKPOINT%%.margin_bottom']];
+        return [['cssProperty' => 'margin-top', 'location' => 'outside-top', 'affectedPropertyPath' => 'design.margin.margin_top.%%BREAKPOINT%%'], ['cssProperty' => 'margin-bottom', 'location' => 'outside-bottom', 'affectedPropertyPath' => 'design.margin.margin_bottom.%%BREAKPOINT%%']];
     }
 
     static function attributes()
@@ -183,7 +183,7 @@ class CategoryLoop extends \Breakdance\Elements\Element
 
     static function experimental()
     {
-        return true;
+        return false;
     }
 
     static function order()
@@ -193,7 +193,7 @@ class CategoryLoop extends \Breakdance\Elements\Element
 
     static function dynamicPropertyPaths()
     {
-        return [];
+        return false;
     }
 
     static function additionalClasses()
