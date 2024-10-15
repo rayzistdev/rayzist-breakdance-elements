@@ -1,13 +1,28 @@
-%%SELECTOR%% { 
-  grid-template-columns: repeat({{ design.layout.columns }}, 1fr);
-  {{ macros.spacing_margin_y(design.margin) }}
+%%SELECTOR%% {
+  {% if design.layout.columns %}
+    grid-template-columns: repeat({{ design.layout.columns }}, 1fr);
+  {% endif %}
+  {{ macros.spacing_margin_y(design.margin) }};
+  gap: {{ design.layout.gap.style }};
 }
 
 %%SELECTOR%% .rayz_cat_block {
-  background-color: {{ design.blocks.background }}
+  background-color: {{ design.blocks.background }};
   {{ macros.borders(design.blocks.borders) }}
 }
 
 %%SELECTOR%% .rayz_cat_block h2 {
   {{ macros.typography(design.blocks.typography, globalSettings) }}
 }
+
+{% if design.image.max_width.style %}
+  %%SELECTOR%% .rayz_cat_block .rayz_img-container {
+    max-width: {{ design.image.max_width.style }};
+    max-height: {{ design.image.max_width.style }};
+  }
+
+  %%SELECTOR%% .rayz_cat_block .rayz_img-container img {
+    max-width: {{ design.image.max_width.style }};
+    max-height: {{ design.image.max_width.style }};
+  }
+{% endif %}

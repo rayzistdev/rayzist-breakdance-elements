@@ -86,7 +86,12 @@ class CategoryCards extends \Breakdance\Elements\Element
 
     static function designControls()
     {
-        return [c(
+        return [getPresetSection(
+      "EssentialElements\\spacing_margin_y",
+      "Margin",
+      "margin",
+       ['type' => 'popout']
+     ), c(
         "layout",
         "Layout",
         [c(
@@ -94,6 +99,14 @@ class CategoryCards extends \Breakdance\Elements\Element
         "Columns",
         [],
         ['type' => 'number', 'layout' => 'inline', 'rangeOptions' => ['min' => 1, 'max' => 5, 'step' => 1]],
+        true,
+        false,
+        [],
+      ), c(
+        "gap",
+        "Gap",
+        [],
+        ['type' => 'unit', 'layout' => 'inline'],
         true,
         false,
         [],
@@ -123,17 +136,33 @@ class CategoryCards extends \Breakdance\Elements\Element
       "Borders",
       "borders",
        ['type' => 'popout']
+     ), getPresetSection(
+      "EssentialElements\\spacing_padding_all",
+      "Padding",
+      "padding",
+       ['type' => 'popout']
      )],
         ['type' => 'section'],
         false,
         false,
         [],
-      ), getPresetSection(
-      "EssentialElements\\spacing_margin_y",
-      "Margin",
-      "margin",
-       ['type' => 'popout']
-     )];
+      ), c(
+        "image",
+        "Image",
+        [c(
+        "max_width",
+        "Max Width",
+        [],
+        ['type' => 'unit', 'layout' => 'inline'],
+        false,
+        false,
+        [],
+      )],
+        ['type' => 'section'],
+        false,
+        false,
+        [],
+      )];
     }
 
     static function contentControls()
@@ -193,7 +222,7 @@ class CategoryCards extends \Breakdance\Elements\Element
 
     static function dynamicPropertyPaths()
     {
-        return false;
+        return [];
     }
 
     static function additionalClasses()

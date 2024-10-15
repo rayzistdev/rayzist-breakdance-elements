@@ -12,13 +12,13 @@ $categories = [];
 
 if (is_shop()) {
     $excluded_cat = get_term_by('slug', 'uncat', 'product_cat');
-    $excluded_cat_id = $excluded_cat ? $excluded_cat->term_id : 0;
+    $uncategorized_term_id = get_option( 'default_product_cat' );
 
     $categories = get_terms([
         'taxonomy' => 'product_cat',
         'hide_empty' => false,
         'parent' => 0,
-        'exclude' => [$excluded_cat_id],
+        'exclude' => [$uncategorized_term_id],
     ]);
 } else {
     $parent_cat = $wp_query->get_queried_object();
@@ -41,7 +41,9 @@ ob_start();
     ?>
     <a class="rayz_cat_block" href="<?php echo esc_url($category_link); ?>">
         <h2><?php echo $category->name; ?></h2>
-        <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo $category->name; ?> thumbnail">
+        <div class="rayz_img-container">
+            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo $category->name; ?> thumbnail">
+        </div>
     </a>
 
 <?php endforeach; ?>
