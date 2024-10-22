@@ -222,7 +222,7 @@ class CategoryCards extends \Breakdance\Elements\Element
 
     static function dynamicPropertyPaths()
     {
-        return [];
+        return [['accepts' => 'string', 'path' => '']];
     }
 
     static function additionalClasses()
@@ -242,6 +242,6 @@ class CategoryCards extends \Breakdance\Elements\Element
 
     static function propertyPathsToSsrElementWhenValueChanges()
     {
-        return false;
+        return ['content.params.ignore_categories'];
     }
 }

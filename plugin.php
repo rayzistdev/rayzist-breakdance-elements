@@ -12,7 +12,7 @@
  * Version: 1.0.0
  */
 
-namespace BreakdanceCustomElements;
+namespace RayzistCustomElements;
 
 use function Breakdance\Util\getDirectoryPathRelativeToPluginFolder;
 

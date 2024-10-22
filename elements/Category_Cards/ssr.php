@@ -1,14 +1,11 @@
 <?php
 
-//var_dump($propertiesData ?? []);
-
-$paginationEnabled = $propertiesData['content']['pagination']['pagination'] ?? false;
-
 global $wp_query;
 
 $placeholder_img_url = wc_placeholder_img_src();
 
 $categories = [];
+$excluded_categories = apply_filters('rayz_excluded_categories', array()) ?? [];
 
 if (is_shop()) {
     $excluded_cat = get_term_by('slug', 'uncat', 'product_cat');
@@ -18,7 +15,7 @@ if (is_shop()) {
         'taxonomy' => 'product_cat',
         'hide_empty' => false,
         'parent' => 0,
-        'exclude' => [$uncategorized_term_id],
+        'exclude' => [$uncategorized_term_id, ...$excluded_categories],
     ]);
 } else {
     $parent_cat = $wp_query->get_queried_object();
@@ -26,6 +23,7 @@ if (is_shop()) {
         'taxonomy' => 'product_cat',
         'hide_empty' => false,
         'parent' => $parent_cat->term_id,
+        'exclude' => $excluded_categories,
     ]);
 }
 
